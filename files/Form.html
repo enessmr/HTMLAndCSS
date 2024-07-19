@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title><title></title></title>
+</head>
+<body>
+
+
+    <form action="index.php" method="POST" enctype="multipart/form-data">
+
+
+        <label for="username">username: (ispy= wtf)</label>
+        <input type="text" id="username" placeholder="ispywithmylittleeyegd" minlength="4" maxlength="999" required>
+
+
+        <label for="password">password</label>
+        <input type="password" id="password" minlength="8" maxlength="20" required><br>
+
+        <label for="email">email</label>
+        <input type="email" id="email" placeholder="example123@gmail.com"><br>
+
+        <label for="phone">phone</label>
+        <input type="tel" id="phone" placeholder="123+ 123-123-32-13"><br>
+
+
+        <label for="bday">birthday:</label>
+        <input type="date" id="bday" minAge="16" required><br>
+
+
+        <label for="quantity">quantity:</label>
+        <input type="number" id="quantity" min="0" max="99" value="1"><br>
+
+
+        <label for="title">title:</label>
+        
+        <label for="Mr.">Mr.:</label>
+        <input type="radio" id="Mr." value="Mr." name="title">
+        <label for="Ms.">Ms.:</label>
+        <input type="radio" id="Ms." value="Ms." name="title">
+        <label for="PhD">PhD:</label>
+        <input type="radio" id="PhD." value="PhD." name="title"><br>
+
+        <label for="payment">payment:</label>
+        <select>
+            <option value="visa">visa</option>
+            <option value="mastercard">mastercard</option>
+            <option value="giftcard">giftcard</option>
+            <option value="nopayment">no payment</option>
+        </select>
+
+        <label for="comment">reason why ure signing up:</label>
+        <textarea id="comment" rows="3" cols="9999"></textarea>
+
+
+        <label for="comment">comment:</label>
+        <textarea id="comment" rows="3" cols="9999"></textarea>
+
+
+        <label for="file">file: (PNG Or Exe no Virus or DAI I FIND U)</label>
+        <input type="file" id="file" accept="image/png">
+
+        <input type="reset">
+        <input type="submit">
+    </form>
+
+
+</body>
+</html>
