@@ -1,18 +1,28 @@
+body{
+	background-color: aliceblue;
+	overflow: auto;
+}
 h1{
 	font-family: sans-serif, Ubuntu;
+	margin:auto;
 }
 a{
 	font-family: sans-serif, Ubuntu;
+	margin:auto;
 }
 h4{
 	font-family: sans-serif, Ubuntu;
+	margin:auto;
 }
 br{
 	font-family: sans-serif, Ubuntu;
+	margin:auto;
 }
 p{
 	font-family: sans-serif, Ubuntu;
+	margin:auto;
 }
 small{
 	font-family: sans-serif, Ubuntu;
+	margin:auto;
 }
