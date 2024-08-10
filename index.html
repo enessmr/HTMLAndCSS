@@ -1,256 +1,59 @@
 <!DOCTYPE html>
-<!-- saved from url=(0037)https://enessmr.github.io/HTMLAndCSS/ -->
-<html lang="auto"><script type="text/javascript">!function pageScript() {
-  let speedConfig = {
-    speed: 1.0,
-    cbSetIntervalChecked: true,
-    cbSetTimeoutChecked: true,
-    cbPerformanceNowChecked: true,
-    cbDateNowChecked: true,
-    cbRequestAnimationFrameChecked: false,
-  };
 
-  const emptyFunction = () => {};
-
-  const originalClearInterval = window.clearInterval;
-  const originalclearTimeout = window.clearTimeout;
-
-  const originalSetInterval = window.setInterval;
-  const originalSetTimeout = window.setTimeout;
-
-  const originalPerformanceNow = window.performance.now.bind(
-    window.performance
-  );
-
-  const originalDateNow = Date.now;
-
-  const originalRequestAnimationFrame = window.requestAnimationFrame;
-
-  let timers = [];
-  const reloadTimers = () => {
-    console.log(timers);
-    const newtimers = [];
-    timers.forEach((timer) => {
-      originalClearInterval(timer.id);
-      if (timer.customTimerId) {
-        originalClearInterval(timer.customTimerId);
-      }
-      if (!timer.finished) {
-        const newTimerId = originalSetInterval(
-          timer.handler,
-          speedConfig.cbSetIntervalChecked
-            ? timer.timeout / speedConfig.speed
-            : timer.timeout,
-          ...timer.args
-        );
-        timer.customTimerId = newTimerId;
-        newtimers.push(timer);
-      }
-    });
-    timers = newtimers;
-  };
-
-  window.addEventListener("message", (e) => {
-    if (e.data.command === "setSpeedConfig") {
-      speedConfig = e.data.config;
-      reloadTimers();
-    }
-  });
-
-  window.postMessage({ command: "getSpeedConfig" });
-
-  window.clearInterval = (id) => {
-    originalClearInterval(id);
-    timers.forEach((timer) => {
-      if (timer.id == id) {
-        timer.finished = true;
-        if (timer.customTimerId) {
-          originalClearInterval(timer.customTimerId);
-        }
-      }
-    });
-  };
-
-  window.clearTimeout = (id) => {
-    originalclearTimeout(id);
-    timers.forEach((timer) => {
-      if (timer.id == id) {
-        timer.finished = true;
-        if (timer.customTimerId) {
-          originalclearTimeout(timer.customTimerId);
-        }
-      }
-    });
-  };
-
-  window.setInterval = (handler, timeout, ...args) => {
-    console.log("timeout  ", timeout);
-    if (!timeout) timeout = 0;
-    const id = originalSetInterval(
-      handler,
-      speedConfig.cbSetIntervalChecked ? timeout / speedConfig.speed : timeout,
-      ...args
-    );
-    timers.push({
-      id: id,
-      handler: handler,
-      timeout: timeout,
-      args: args,
-      finished: false,
-      customTimerId: null,
-    });
-    return id;
-  };
-
-  window.setTimeout = (handler, timeout, ...args) => {
-    if (!timeout) timeout = 0;
-    return originalSetTimeout(
-      handler,
-      speedConfig.cbSetTimeoutChecked ? timeout / speedConfig.speed : timeout,
-      ...args
-    );
-  };
-
-  // performance.now
-  (function () {
-    let performanceNowValue = null;
-    let previusPerformanceNowValue = null;
-    window.performance.now = () => {
-      const originalValue = originalPerformanceNow();
-      if (performanceNowValue) {
-        performanceNowValue +=
-          (originalValue - previusPerformanceNowValue) *
-          (speedConfig.cbPerformanceNowChecked ? speedConfig.speed : 1);
-      } else {
-        performanceNowValue = originalValue;
-      }
-      previusPerformanceNowValue = originalValue;
-      return Math.floor(performanceNowValue);
-    };
-  })();
-
-  // Date.now
-  (function () {
-    let dateNowValue = null;
-    let previusDateNowValue = null;
-    Date.now = () => {
-      const originalValue = originalDateNow();
-      if (dateNowValue) {
-        dateNowValue +=
-          (originalValue - previusDateNowValue) *
-          (speedConfig.cbDateNowChecked ? speedConfig.speed : 1);
-      } else {
-        dateNowValue = originalValue;
-      }
-      previusDateNowValue = originalValue;
-      return Math.floor(dateNowValue);
-    };
-  })();
-
-  // requestAnimationFrame
-  (function () {
-    let dateNowValue = null;
-    let previusDateNowValue = null;
-    const callbackFunctions = [];
-    const callbackTick = [];
-    const newRequestAnimationFrame = (callback) => {
-      return originalRequestAnimationFrame((timestamp) => {
-        const originalValue = originalDateNow();
-        if (dateNowValue) {
-          dateNowValue +=
-            (originalValue - previusDateNowValue) *
-            (speedConfig.cbRequestAnimationFrameChecked
-              ? speedConfig.speed
-              : 1);
-        } else {
-          dateNowValue = originalValue;
-        }
-        previusDateNowValue = originalValue;
-
-        const dateNowValue_MathFloor = Math.floor(dateNowValue);
-
-        const index = callbackFunctions.indexOf(callback);
-        let tickFrame = null;
-        if (index == -1) {
-          callbackFunctions.push(callback);
-          callbackTick.push(0);
-          callback(dateNowValue_MathFloor);
-        } else if (speedConfig.cbRequestAnimationFrameChecked) {
-          tickFrame = callbackTick[index];
-          tickFrame += speedConfig.speed;
-
-          if (tickFrame >= 1) {
-            while (tickFrame >= 1) {
-              callback(dateNowValue_MathFloor);
-              window.requestAnimationFrame = emptyFunction;
-              tickFrame -= 1;
-            }
-            window.requestAnimationFrame = newRequestAnimationFrame;
-          } else {
-            window.requestAnimationFrame(callback);
-          }
-          callbackTick[index] = tickFrame;
-        } else {
-          callback(dateNowValue_MathFloor);
-        }
-      });
-    };
-    window.requestAnimationFrame = newRequestAnimationFrame;
-  })();
-}()
-//# sourceURL=pageScript.js</script><script id="youtube-hd-fjdmkanbdloodhegphphhklnjfngoffa">var ythdlog = () => {};;var ythderror = () => {};</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="auto"> 
+<head>
     <title>Finish</title>
-    
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="meta tags">
     <meta name="keywords" content="html, learning, beginner">
     <meta name="author" content="eb smr">
     <meta name="viewport" content="width=device-width, inital-scale=1.0">
-    <link rel="stylesheet" href="./index_files/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header style="background-color: aliceblue;">
         <h1>Welcome to Many Mc Source Code</h1>
-        <a href="https://enessmr.github.io/HTMLAndCSS/index.html">Home (grove stret home at lest i das everything up.)</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/">Produtcs (Coming SOON!)</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/">About Us</a><br>
+        <a href="index.html">Home (grove stret home at lest i das everything up.)</a><br>
+        <a href="">Produtcs (Coming SOON!)</a><br>
+        <a href="">About Us</a><br>
         <hr>
         <h4>HTML things</h4>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/Basics.html">HTML Basics</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/mp3.html">MP3</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/img.html">IMG</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/ahref.html">A href</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/butttoflush.html">Butt to Flush</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/Form.html">Forms</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/list.html">list</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/favic.html">favorite icons</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/divspan.html">Div &amp; Span</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/vid.html">video</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/Tables.html">tables</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/Text.html">text</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/css%20learn/fonts.html">css learn fonts</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/files/meta.html">meta tags</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/css%20learn/colors.html">colors</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/css%20learn/borders.html">Borders</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/css%20learn/shadows.html">Shashdows</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/css%20learn/M%20a%20r%20i%20g%20i%20n%20o.html">Mariginino</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/css%20learn/float.html">Floats</a><br>
-        <a href="https://enessmr.github.io/HTMLAndCSS/css%20learn/overFlow.html">Overflows</a><br>
+        <a href="files/Basics.html">HTML Basics</a><br>
+        <a href="files/mp3.html">MP3</a><br>
+        <a href="files/img.html">IMG</a><br>
+        <a href="files/ahref.html">A href</a><br>
+        <a href="files/butttoflush.html">Butt to Flush</a><br>
+        <a href="files/Form.html">Forms</a><br>
+        <a href="files/list.html">list</a><br>
+        <a href="files/favic.html">favorite icons</a><br>
+        <a href="files/divspan.html">Div & Span</a><br>
+        <a href="files/vid.html">video</a><br>
+        <a href="files/Tables.html">tables</a><br>
+        <a href="files/Text.html">text</a><br>
+        <a href="css learn/fonts.html">css learn fonts</a><br>
+        <a href="files/meta.html">meta tags</a><br>
+        <a href="css learn/colors.html">colors</a><br>
+        <a href="css learn/borders.html">Borders</a><br>
+        <a href="css learn/shadows.html">Shashdows</a><br>
+        <a href="css learn/M a r i g i n o.html">Mariginino</a><br>
+        <a href="css learn/float.html">Floats</a><br>
+        <a href="css learn/overFlow.html">Overflows</a><br>
         <hr>
     </header>
 
     <main>
         <h4>cool moves</h4>
-        <img src="./index_files/big-steve-face.jpg" alt="my profile pic" height="100px">
+        <image src="files/big-steve-face.jpg" alt="my profile pic" height="100px"></image>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis orci leo, sodales eu sapien sed, lacinia commodo neque. Integer massa magna, rutrum ac ultricies sed, congue at nisi. Pellentesque aliquet eleifend.</p>
     </main>
 
     <footer style="background-color: aliceblue;">
         <hr>
         author: Many MC<br>
-        © copyright reseved<br>
+        &copy; copyright reseved<br>
         <small><a href="mailto:enessmr22@gmail.com">enessmr22@gmail.com</a></small>
     </footer>
-
-
-a<div id="writingmate-root"><template shadowrootmode="open"><div id="writingmate-mount-point"><div class="react-draggable mantine-169yoye" id="writingmate-widget-button" style="transform: translate(0px, 0px);"><button class="mantine-UnstyledButton-root mantine-ActionIcon-root mantine-zfgf7a" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-x"><path d="M18 6l-12 12"></path><path d="M6 6l12 12"></path></svg></button><button class="mantine-UnstyledButton-root mantine-ActionIcon-root mantine-hbb26w" type="button"><div class="mantine-1gnwfpi"><svg width="34" height="34" viewBox="0 0 210 210" fill="none" class="mantine-oykvf6" xmlns="http://www.w3.org/2000/svg"><rect width="210" height="210" rx="105" fill="#6C46FF"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M138.879 136.377C129.375 143.311 117.665 147.403 104.999 147.403C92.3329 147.403 80.6227 143.311 71.1181 136.377L65.6736 150.609C63.8688 155.326 65.5041 160.744 69.9788 163.087C80.3898 168.538 92.3193 171.634 104.999 171.634C117.678 171.634 129.608 168.538 140.019 163.087C144.493 160.744 146.129 155.326 144.324 150.609L138.879 136.377Z" fill="white" fill-opacity="0.5"></path><circle cx="105.009" cy="89.8548" r="51.4904" fill="white" fill-opacity="0.5"></circle><path d="M135.974 41.8358C136.581 39.3794 140.073 39.3794 140.679 41.8358L143.973 55.1773C144.188 56.0511 144.871 56.7333 145.744 56.949L159.086 60.2426C161.542 60.849 161.542 64.3411 159.086 64.9475L145.744 68.2411C144.871 68.4568 144.188 69.139 143.973 70.0128L140.679 83.3543C140.073 85.8108 136.581 85.8108 135.974 83.3543L132.681 70.0128C132.465 69.139 131.783 68.4568 130.909 68.2411L117.567 64.9475C115.111 64.3411 115.111 60.849 117.567 60.2426L130.909 56.949C131.783 56.7333 132.465 56.0511 132.681 55.1773L135.974 41.8358Z" fill="white"></path><path d="M106.627 80.4281C106.99 78.9542 109.086 78.9542 109.449 80.4281L111.426 88.433C111.555 88.9572 111.964 89.3666 112.489 89.496L120.494 91.4721C121.967 91.836 121.967 93.9312 120.494 94.2951L112.489 96.2712C111.964 96.4006 111.555 96.81 111.426 97.3342L109.449 105.339C109.086 106.813 106.99 106.813 106.627 105.339L104.65 97.3342C104.521 96.81 104.112 96.4006 103.587 96.2712L95.5825 94.2951C94.1086 93.9312 94.1086 91.836 95.5825 91.4721L103.587 89.496C104.112 89.3666 104.521 88.9572 104.65 88.433L106.627 80.4281Z" fill="white"></path></svg></div></button></div><div class="mantine-wrmsb1" id="writingmate-container"><div class="mantine-Paper-root mantine-1um8g9i"><div class="mantine-m0j3io"><button class="mantine-UnstyledButton-root mantine-ActionIcon-root mantine-loihmo" type="button" style="position: absolute; top: 0px; right: 0px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-x"><path d="M18 6l-12 12"></path><path d="M6 6l12 12"></path></svg></button><div class="mantine-Stack-root mantine-kh5kgh"><h3 class="mantine-Text-root mantine-Title-root mantine-1p7tqes">Welcome to Writingmate.ai</h3><div class="mantine-Text-root mantine-145rksy">an AI-powered communications<br> and writing assistant</div><div class="mantine-7o6j5m"><button class="mantine-UnstyledButton-root mantine-Button-root mantine-1e82y16" type="button" data-button="true"><div class="mantine-3xbgk5 mantine-Button-inner"><span class="mantine-Button-icon mantine-Button-leftIcon mantine-1g4orza"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-key"><path d="M16.555 3.843l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.643 2.643a2.877 2.877 0 0 1 -4.069 0l-.301 -.301l-6.558 6.558a2 2 0 0 1 -1.239 .578l-.175 .008h-1.172a1 1 0 0 1 -.993 -.883l-.007 -.117v-1.172a2 2 0 0 1 .467 -1.284l.119 -.13l.414 -.414h2v-2h2v-2l2.144 -2.144l-.301 -.301a2.877 2.877 0 0 1 0 -4.069l2.643 -2.643a2.877 2.877 0 0 1 4.069 0z"></path><path d="M15 9h.01"></path></svg></span><span class="mantine-qo1k2 mantine-Button-label">Continue to Login</span></div></button></div><div class="mantine-Text-root mantine-1ltuuug">By continuing you agree to our <a class="mantine-Text-root mantine-Anchor-root mantine-c4kbzp" target="_blank" href="https://www.notion.so/writemate/WritingMate-ai-Privacy-Policy-a2a4899a8177457786877a109b1ff901">Privacy Policy</a></div><div class="mantine-8od8ev"><div class="mantine-Paper-root mantine-Card-root mantine-fh46b"><div class="mantine-hpmcve"><div class="mantine-Text-root mantine-yje6tx">4.8  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_476_1247)"><path d="M7.9987 11.5159L12.1187 14.0026L11.0254 9.31594L14.6654 6.1626L9.87203 5.75594L7.9987 1.33594L6.12536 5.75594L1.33203 6.1626L4.97203 9.31594L3.8787 14.0026L7.9987 11.5159Z" fill="#FBBC04"></path></g><defs><clippath id="clip0_476_1247"><rect width="16" height="16" fill="white"></rect></clippath></defs></svg></div><div style="width: 1px; height: 18px; background-color: rgb(221, 221, 221);"></div><div class="mantine-Text-root mantine-19c95tw">Trusted by <div class="mantine-Text-root mantine-1xjbwk5">50,000+</div> users</div></div></div></div></div></div></div></div></div><div><style data-emotion="mantine" data-s=""></style><div dir="ltr"></div></div></template></div></body></html>
+</body>
+</html>
+a
