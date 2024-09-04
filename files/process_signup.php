@@ -1,4 +1,16 @@
 <?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // POST ile gelen istekleri işleyin
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    // Devam edin...
+} else {
+    // Eğer POST dışındaki bir yöntemle istek yapılırsa
+    header('HTTP/1.1 405 Method Not Allowed');
+    echo '405 Method Not Allowed';
+    exit;
+}
+
 // Veritabanı bağlantısı
 $pdo = new PDO('mysql:host=localhost;dbname=your_database', 'username', 'password');
 
