@@ -2,7 +2,7 @@
 name: Bug report
 about: if it breaks lmao
 title: ''
-labels: bug
+labels: bug, invaild - not mods seed this yet
 assignees: enessmr
 
 ---

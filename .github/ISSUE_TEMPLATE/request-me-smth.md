@@ -2,7 +2,7 @@
 name: Request me SMTH
 about: adding ...
 title: ''
-labels: Requests
+labels: invaild - not mods seed this yet, Requests
 assignees: ''
 
 ---
