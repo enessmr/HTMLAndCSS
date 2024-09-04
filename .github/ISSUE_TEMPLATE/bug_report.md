@@ -1,8 +1,8 @@
 ---
 name: Bug report
 about: if it breaks lmao
-title: BUG
-labels: ''
+title:
+labels: 'bug'
 assignees: enessmr
 
 ---
