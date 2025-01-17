@@ -1,0 +1,32 @@
+#box1{
+    width: 200px;
+    height: 200px;
+    background-color: hsl(188, 100%, 63%);
+    /*position: relative;*/ /*This works*/
+    position: sticky;
+    /*position: fixed*/ /*This works*/
+    /*top: 100px;
+    left: 100px;*/ /* Those 2 work */
+    /*top: -100px;
+    left: -100px;*/ /*These 2 work*/
+    /*right:0px;
+    bottom:0px; */ /*These 2 work*/
+    top: 100px;
+    left: 100px;
+}
+#box2{
+    width: 100px;
+    height: 100px;
+    background-color: hsl(0, 100%, 63%);
+    /*position: relative;*/ /*This works*/
+    /*position: absolute;*/ /*This works*/
+    position: static;
+    /*top: 100px;
+    left: 100px;*/ /* Those 2 work */
+    /*top: -100px;
+    left: -100px;*/ /*These 2 work*/
+    /*right:0px;
+    bottom:0px; */ /*These 2 work*/
+    top:50px;
+    left: 50px;
+}

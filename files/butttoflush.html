@@ -11,13 +11,13 @@
     <meta name="viewport" content="width=device-width, inital-scale=1.0">
 </head>
 <body>
-        <button oneclick="doSomething()" style="font-size: 25px; background-color: grey; color:Lightblue; border-radius: 19px;">TEST</button>
-    <p id="greeting">Hello</p>
+        <button onclick="doSomething()" style="font-size: 25px; background-color: grey; color:Lightblue; border-radius: 19px;">TEST</button>
+    <p id="greeting" style="font-family: sans-serif;">Hello</p>
     <script>
         function doSomething(){
             document.getElementById("greeting").innerHTML = "Goodbye";
         }
     </script>
-    <h1>Something is broken.</h1>
+    <h1 style="font-family: sans-serif;">Something is fixed (I didnt know that oneclick is not valid its onclick its now fixed)</h1>
 </body>
 </html>

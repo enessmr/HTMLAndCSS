@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+.container{
+    background-color: hsl(0, 0%, 24%);
+    height: 100vh;
+}
+.box{
+    background-color: hsl(0, 0%, 100%);
+    border: 2px solid;
+    padding: 25px;
+    box-sizing: border-box;
+    height: auto;
+    /*height: 200px; This also works*/
+    /*width: 100px; This also works*/
+    /*width: auto; This also works*/
+    width: 50%;
+    float: left;
+    /*float: right; This also works*/
+    text-align: center;
+
+    max-height: 75%;
+    min-height: 50%;
+}

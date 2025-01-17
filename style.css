@@ -38,3 +38,40 @@ hr{
 	font-family: sans-serif, Ubuntu;
 	margin: auto;
 }
+
+.TopBar {
+    position: fixed;
+    top: 0px;
+    z-index: 2;
+    height: 60px;
+    width: 100%;
+    background-color: aliceblue;
+}
+
+.TopBarContent1 {
+    position: fixed;
+    left: 23px; /* Corrected: Added px unit */
+    top: 19px;  /* Corrected: Added px unit */
+}
+
+.TopBarContent3 {
+    position: fixed;
+    left: 90px; /* Corrected: Added px unit */
+    top: 8px;  /* Corrected: Added px unit */
+}
+
+.TopBarContent4 {
+    position: fixed;
+    left: 460px; /* Corrected: Added px unit */
+    top: 12px;  /* Corrected: Added px unit */
+}
+
+.TopBarContent2 {
+    position: fixed;
+    right: 23px; /* Corrected: Added px unit */
+    top: 19px;   /* Corrected: Added px unit */
+}
+.TopBarBottomDivider {
+    position: fixed;
+    top: 60px;   /* Corrected: Added px unit */
+}

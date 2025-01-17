@@ -1,0 +1,78 @@
+body{
+    font-family: sans-serif;
+}
+
+.div1{
+    background-color: hsl(0, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+.span1{
+    background-color: hsl(204, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+.div2{
+    background-color: hsl(0, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: inline;
+}
+.span2{
+    background-color: hsl(204, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: inline;
+}
+.div3{
+    background-color: hsl(0, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+.span3{
+    background-color: hsl(204, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+.div4{
+    background-color: hsl(0, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    visibility: hidden;
+}
+.span4{
+    background-color: hsl(204, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+.div5{
+    background-color: hsl(0, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: none;
+    visibility: hidden;
+}
+.span5{
+    background-color: hsl(204, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+.div6{
+    background-color: hsl(0, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+.span6{
+    background-color: hsl(204, 100%, 75%);
+    width: 100px;
+    height: 100px;
+    display: inline;
+}
